@@ -105,7 +105,46 @@ SELECT *
 FROM customers
 LIMIT 5;
 
-Get customers data for page 3 each page contains 2 customer data
+-- Get customers data for page 3 each page contains 2 customer data
 SELECT *
 FROM customers
 LIMIT 2 OFFSET 4;
+
+-- Get the orders list with user details
+SELECT order_id, C.customer_id, first_name, last_name, phone, address, order_date, status, shipped_date
+FROM orders as O
+JOIN customers AS C ON C.customer_id = O.customer_id;
+
+-- Get the order list with user and order status details
+SELECT order_id,order_date,O.customer_id,first_name,last_name,name
+FROM orders O
+JOIN customers C
+ON C.customer_id = O.customer_id
+JOIN order_statuses OS
+ON OS.order_status_id = O.status;
+
+-- Get payment list with user, payment and invoice details
+SELECT P.payment_id,P.client_id,P.date,P.amount,PM.name as payment_method,C.name as customer_name,C.phone,C.address,P.invoice_id,invoice_date
+FROM sql_invoicing.payments P
+JOIN sql_invoicing.clients C
+ON P.client_id = C.client_id
+JOIN sql_invoicing.payment_methods PM
+ON PM.payment_method_id = P.payment_id
+JOIN sql_invoicing.invoices I
+ON I.invoice_id = P.invoice_id;
+
+-- Get all products that have been ordered by customer
+SELECT P.product_id, P.name, O.quantity
+FROM products P
+LEFT JOIN order_items O
+ON P.product_id = O.product_id;
+
+-- Get all orders with user, shipper and order status details
+SELECT order_date,O.order_id,first_name,O.shipper_id,OS.name AS status
+FROM orders O
+JOIN customers C
+ON C.customer_id = O.customer_id  
+LEFT JOIN shippers S
+ON S.shipper_id = O.shipper_id
+JOIN order_statuses OS
+ON OS.order_status_id = O.status;

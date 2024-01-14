@@ -25,3 +25,9 @@ IS NULL - to filter the data if the column in null
 LIMIT, OFFSET - to limit the data and skip some data
 
 ORDER BY - to sort the data
+
+JOIN - join two tables by some column field usin ON keyword
+
+LEFT - left join includes all the columns in the left table even it fails the ON condition
+
+RIGHT - right join includes all the columns in the right table even it fails the ON condition
