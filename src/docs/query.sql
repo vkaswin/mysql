@@ -148,3 +148,38 @@ LEFT JOIN shippers S
 ON S.shipper_id = O.shipper_id
 JOIN order_statuses OS
 ON OS.order_status_id = O.status;
+
+-- Get all payment details with client and payment method details
+SELECT date,C.name AS client,amount,PM.name AS name
+FROM payments P
+JOIN payment_methods PM
+ON PM.payment_method_id = P.payment_method
+JOIN clients C
+USING (client_id);
+
+-- Get all customer and categorize based on the points the customer have
+SELECT customer_id, first_name, points, "BRONZE" AS type
+FROM customers
+WHERE points < 2000
+UNION
+SELECT customer_id, first_name, points, "SILVER" AS type
+FROM customers
+WHERE points BETWEEN 2000 AND 3000
+UNION
+SELECT customer_id, first_name, points, "GOLD" AS type
+FROM customers
+WHERE points > 3000;
+
+-- Add 50 points to customers birth date is less than 1990-01-01
+UPDATE customers
+SET points = points+50
+WHERE birth_date > "1990-01-01";
+
+-- Update order table comment where the customer has more than 3000 points
+UPDATE orders
+SET comments = "Loreum Ispum"
+WHERE customer_id IN (
+	SELECT customer_id 
+    FROM customers
+	WHERE points > 3000
+);

@@ -31,3 +31,17 @@ JOIN - join two tables by some column field usin ON keyword
 LEFT - left join includes all the columns in the left table even it fails the ON condition
 
 RIGHT - right join includes all the columns in the right table even it fails the ON condition
+
+USING - instead of adding ON condition just put the column name we should compare (works only if both table have same column name)
+
+CROSS - creates all records from both tables (table1 and table2), it creates all possible combinations
+
+UNION - combines two query results
+
+INSERT INTO - insert data into a table
+
+UPDATE - to update columns
+
+SET - to set new value to the column
+
+DELETE FROM - remove columns in a table
