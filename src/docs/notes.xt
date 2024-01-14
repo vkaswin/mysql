@@ -1,0 +1,27 @@
+SELECT - specify the colums we want or put * to retrive all the colums in the table
+
+FROM - specify the table from where we need to get the data
+
+WHERE - to filter the data based on certian condition
+
+ORDER BY - specify the column to sort
+
+AS - specify the descriptive name of the column
+
+AND, OR, NOT - Logical operators
+
+!=, =, >=, <=, >, < - Comparision operators
+
+IN, NOT IN - filter rows based on whether a specified value matches any value in a set or does not match any value in a set
+
+BETWEEN - to specify a range
+
+LIKE - to filter the data by pattern (percentage(%) - any number of character, underscore(_) - single character)
+
+REGEXP - to filter the data by regular expression
+
+IS NULL - to filter the data if the column in null
+
+LIMIT, OFFSET - to limit the data and skip some data
+
+ORDER BY - to sort the data
