@@ -183,3 +183,51 @@ WHERE customer_id IN (
     FROM customers
 	WHERE points > 3000
 );
+
+-- Delete user by id
+DELETE FROM users
+WHERE id = 1;
+
+-- Create a new database
+CREATE DATABASE users
+
+-- Delete a database
+DROP DATABASE users
+
+-- Rename table
+RENAME TABLE invoice_archieved TO invoice;
+
+-- Modify column schema
+ALTER TABLE users
+MODIFY COLUMN phone VARCHAR(10);
+
+-- Create a table
+CREATE TABLE users (
+	id INT,
+	name VARCHAR(50),
+    phone INT,
+    email VARCHAR(50)
+);
+
+-- Add multiple rows into table
+INSERT INTO users (
+	id,
+	name,
+    phone,
+    email
+) 
+VALUES 
+(1, "Aswin", 9098787343, "aswin@gmail.com"),
+(2,"John Doe", 9383434343, "john@gamil.com");
+
+-- Add new columns in a table
+ALTER TABLE users
+ADD created_at DATE,
+ADD updated_at DATE;
+
+-- Get the total orders based on their status
+SELECT OS.name as status, COUNT(O.order_id) AS total_orders
+FROM orders O
+JOIN order_statuses OS
+ON O.status = OS.order_status_id
+GROUP BY O.status;

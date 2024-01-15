@@ -45,3 +45,25 @@ UPDATE - to update columns
 SET - to set new value to the column
 
 DELETE FROM - remove columns in a table
+
+RENAME COLUMN - used to rename column
+
+ALTER TABLE - used to change table column
+
+MODIFY COLUMN - used to change the column schema
+
+COUNT(column) - to count total number of records
+
+MAX(column) - to find maximum value
+
+MIN(column) - to find minimum value
+
+AVG(column) - to find average value
+
+CONCAT(columns) - to concat string
+
+GROUP BY - group values by column name
+
+ROLLUP - used with group clause to calculate the total value
+
+PROCEDURE - to store a commonly used query and acess it buy CALL keyword with procedure name
